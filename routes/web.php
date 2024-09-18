@@ -3,6 +3,7 @@
 use App\Http\Controllers\CommentIndexController;
 use App\Http\Controllers\PostStoreController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserShowController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -27,6 +28,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/comments', CommentIndexController::class)->name('comments.index');
     Route::post('/comments', PostStoreController::class)->name('comments.store');
+
+    Route::get('/user/{user}', UserShowController::class)->name('user.show');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
