@@ -17,7 +17,9 @@ class UserShowController extends Controller
         $user->load(['posts.user']);
         return inertia()->render('Users/Show', [
             'user' => UserResource::make($user),
-            'posts' => PostResource::collection($user->posts),
+            'posts' => inertia()->lazy(function () use ($user) {
+                return PostResource::collection($user->posts);
+            }),
         ]);
     }
 }
