@@ -2,6 +2,7 @@
 
 import {Head, useForm, router, Link} from "@inertiajs/vue3";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+import {useToast} from "vue-toastification";
 
 defineProps({
     posts: Object
@@ -19,6 +20,7 @@ const createPost = () => {
         preserveScroll: true,
         // esse metodo é chamado após o sucesso da requisição. E recebe um callback
         onSuccess: () => {
+            useToast().success('Post created successfully');
             //resetou o formulário após o sucesso da requisição
             form.reset();
         }
