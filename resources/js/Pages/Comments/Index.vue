@@ -1,8 +1,9 @@
 <script setup>
 
-import {Head, useForm, router, Link} from "@inertiajs/vue3";
+import {Head, useForm, router, Link, usePage} from "@inertiajs/vue3";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import {useToast} from "vue-toastification";
+import {watch} from "vue";
 
 defineProps({
     posts: Object
@@ -10,6 +11,18 @@ defineProps({
 
 const form = useForm({
     body: ''
+});
+
+const page = usePage();
+const toast = useToast();
+
+watch(() => page.props.message, (value) => {
+
+    if (value) {
+        toast(value.content, {type: value.type});
+
+    }
+
 });
 
 //form.setError('body', 'We need a body for the post');
@@ -20,7 +33,7 @@ const createPost = () => {
         preserveScroll: true,
         // esse metodo é chamado após o sucesso da requisição. E recebe um callback
         onSuccess: () => {
-            useToast().success('Post created successfully');
+
             //resetou o formulário após o sucesso da requisição
             form.reset();
         }

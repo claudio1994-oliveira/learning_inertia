@@ -17,6 +17,9 @@ class PostStoreController extends Controller
 
         $post = $request->user()->posts()->create($request->only('body'));
 
-        return back()->with('message', 'Post criado com sucesso!');
+        return back()->with('message', [
+            'type' => 'success',
+            'content' => 'Post criado com sucesso!',
+        ]);
     }
 }
