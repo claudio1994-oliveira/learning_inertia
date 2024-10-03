@@ -8,6 +8,7 @@ import {resolvePageComponent} from 'laravel-vite-plugin/inertia-helpers';
 import {ZiggyVue} from '../../vendor/tightenco/ziggy';
 
 import Toast from "vue-toastification";
+import {notifications} from './Plugins/notifications';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -18,6 +19,7 @@ createInertiaApp({
         return createApp({render: () => h(App, props)})
             .use(plugin)
             .use(Toast)
+            .use(notifications)
             .use(ZiggyVue)
             .mount(el);
     },

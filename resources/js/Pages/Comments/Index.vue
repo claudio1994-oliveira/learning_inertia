@@ -14,16 +14,16 @@ const form = useForm({
 });
 
 const page = usePage();
-const toast = useToast();
+//const toast = useToast();
 
-watch(() => page.props.message, (value) => {
+//watch(() => page.props.message, (value) => {
 
-    if (value) {
-        toast(value.content, {type: value.type});
+//   if (value) {
+//       toast(value.content, {type: value.type});
 
-    }
+//    }
 
-});
+//});
 
 //form.setError('body', 'We need a body for the post');
 
