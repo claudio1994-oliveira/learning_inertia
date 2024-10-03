@@ -30,6 +30,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/comments', PostStoreController::class)->name('comments.store');
 
     Route::get('/user/{user}', UserShowController::class)->name('user.show');
+
+    Route::inertia('about', 'About', ['appName' => config('app.name')])->name('about');
+
 });
 
 require __DIR__ . '/auth.php';
