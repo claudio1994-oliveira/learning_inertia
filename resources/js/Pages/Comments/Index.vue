@@ -6,7 +6,8 @@ import {useToast} from "vue-toastification";
 import {watch} from "vue";
 
 defineProps({
-    posts: Object
+    posts: Object,
+    can: Object
 });
 
 const form = useForm('StoreComments', {
@@ -63,7 +64,9 @@ const refreshComments = () => {
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-3">
 
-                <form class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6" @submit.prevent="createPost">
+                <form class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6" @submit.prevent="createPost"
+                      v-if="can.create"
+                >
                     <label for="body" class="sr-only">Body</label>
                     <textarea
                         v-model="form.body"

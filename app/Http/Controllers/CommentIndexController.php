@@ -18,6 +18,9 @@ class CommentIndexController extends Controller
             'posts' => PostResource::collection(Post::query()
                 ->with('user')
                 ->latest()->get()),
+            'can' => [
+                'create' => $request->user()?->can('create', Post::class),
+            ],
         ]);
     }
 }
