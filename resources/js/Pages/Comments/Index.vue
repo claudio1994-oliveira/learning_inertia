@@ -9,7 +9,7 @@ defineProps({
     posts: Object
 });
 
-const form = useForm({
+const form = useForm('StoreComments', {
     body: ''
 });
 
